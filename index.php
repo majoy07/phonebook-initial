@@ -9,14 +9,20 @@ include("auth.php");
 <title>Welcome Home</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body background="photos/pexels-photo-269481.jpeg" alt="Responsive background-image" >
+<body background="photos/pexels-photo-304664.jpeg" alt="Responsive background-image" >
 <center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <div class="form">
-<h1><font face="Cooper Black"><font color="white">Welcome <?php echo $_SESSION['username']; ?>!</font></font></h1>
+<h1><font face="Cooper Black"><font color="black">Welcome <?php echo $_SESSION['username']; ?>!</font></font></h1>
 <br/><br/>
-<p><a href="dashboard.php"><font color="yellow">Dashboard</font></a></p>
-<a href="logout.php"><font color="yellow">Logout</font></a>
+<div class="sidebar">
+  
+  <a href="dashboard.php"><i class="fa fa-user-circle-o"></i>Profile</a>
+  <a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a>
+</div>
+
+
 </div>
 </center>
 </body>

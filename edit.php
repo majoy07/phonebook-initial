@@ -2,7 +2,7 @@
 require('db.php');
 include("auth.php");
 $id=$_REQUEST['id'];
-$query = "SELECT * from new_record where id='".$id."'"; 
+$query = "SELECT * from adddata where id='".$id."'"; 
 $result = mysqli_query($con, $query) or die ( mysqli_error());
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -12,27 +12,30 @@ $row = mysqli_fetch_assoc($result);
 <meta charset="utf-8">
 <title>Update Record</title>
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body background="photos/pexels-photo-317355.jpeg" alt="Responsive background-image" >
-<div class="form">
-<p><a href="dashboard.php">Dashboard</a> 
-| <a href="insert.php">Insert New Record</a> 
-| <a href="logout.php">Logout</a></p>
-<h1>Update Record</h1>
+<body background="photos/pexels-photo-304664.jpeg" alt="Responsive background-image" >
+<br/><br/><br/><br/>
+<div class="sidebar">
+  <a href="dashboardphp"><i class="fa fa-fw fa-home"></i> Profile</a>
+  <a href="insert.php"><i class="fa fa-address-card-o"></i>Add new Contact</a>
+  <a href="logout.php"><i class="fa fa-fw fa-user"></i> Logout</a>
+</div>
+<center><h1>Update Record</h1>
 <?php
 $status = "";
-if(isset($_POST['new']) && $_POST['new']==1)
+if(isset($_POST['submit']) && $_POST['new']==1)
 {
 $id=$_REQUEST['id'];
-$trn_date = date("Y-m-d H:i:s");
-$firstname =$_REQUEST['firstname'];
-$surname =$_REQUEST['surname'];
-$mobile =$_REQUEST['mobile'];
-$update="update new_record set trn_date='".$trn_date."',
-firstname='".$firstname."', surname='".$surname."',mobile='".$mobile."',where id='".$id."'";
-mysqli_query($con, $update) or die(mysqli_error());
-$status = "Record Updated Successfully. </br></br>
-<a href='view.php'>View Updated Record</a>";
+$firstname =$_POST['firstname'];
+$surname =$_POST['surname'];
+$phone =$_POST['phone'];
+$update="update adddata set
+firstname='".$firstname."', surname='".$surname."',
+phone='".$phone."' where id='".$id."'";
+mysqli_query($con, $update); 
+$status = "Contact Updated Successfully. </br></br>
+<a href='view.php'>View Updated Contact</a>";
 echo '<p style="color:#FF0000;">'.$status.'</p>';
 }else {
 ?>
@@ -44,10 +47,11 @@ echo '<p style="color:#FF0000;">'.$status.'</p>';
 required value="<?php echo $row['firstname'];?>" /></p>
 <p><input type="text" name="surname" placeholder="Enter surname" 
 required value="<?php echo $row['surname'];?>" /></p>
-<p><input type="text" name="mobile" placeholder="Enter number" 
-required value="<?php echo $row['mobile'];?>" /></p>
+<p><input type="text" name="phone" placeholder="Enter number" 
+required value="<?php echo $row['phone'];?>" /></p>
 <p><input name="submit" type="submit" value="Update" /></p>
 </form>
+</center>
 <?php } ?>
 </div>
 </div>

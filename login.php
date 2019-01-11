@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="style.css" />
 </head>
-<body background="photos/pexels-photo-984541.jpeg" alt="Responsive background-image" >
+<body background="photos/pexels-photo-304664.jpeg" alt="Responsive background-image" >
 <?php
 require('db.php');
 session_start();
@@ -26,7 +26,7 @@ and password='".md5($password)."'";
         if($rows==1){
 	    $_SESSION['username'] = $username;
             // Redirect user to index.php
-	    header("Location: index.php");
+	    header("Location: dashboard.php");
          }else{
 	echo "<div class='form'>
 <h3>Username/password is incorrect.</h3>
@@ -44,6 +44,17 @@ and password='".md5($password)."'";
 </form><br/>
 <p>Not registered yet? <a href='signup.php'>Register Here</a></p>
 </div>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+  
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 <?php } ?>
 </body>
 </html>
